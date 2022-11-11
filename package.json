@@ -1,16 +1,7 @@
 {
-  "dependencies": {
-    "ejs": "^3.1.8",
-    "express": "^4.18.2"
-  },
   "name": "comp229.webspinners",
   "description": "COMP229 Team Project",
   "version": "1.0.0",
-  "main": "server.js",
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/csaduna/COMP229.WebSpinners.git"
@@ -27,5 +18,19 @@
   "bugs": {
     "url": "https://github.com/csaduna/COMP229.WebSpinners/issues"
   },
-  "homepage": "https://github.com/csaduna/COMP229.WebSpinners#readme"
+  "homepage": "https://github.com/csaduna/COMP229.WebSpinners#readme",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1"
+  }
 }
+  
