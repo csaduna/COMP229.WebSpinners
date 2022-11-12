@@ -1,4 +1,5 @@
 // create a reference to the model
+const { response } = require('../config/app');
 let Ads = require('../models/ads.model');
 
 exports.adsList = function(req, res, next) {  
@@ -68,7 +69,7 @@ module.exports.processEditPage = (req, res, next) => {
         {
             // console.log(req.body);
             // refresh the book list
-            res.redirect('ads/list');
+            res.redirect('/ads/list');
         }
     });
 }
@@ -78,7 +79,7 @@ module.exports.displayAddPage = (req, res, next) => {
     let newItem = Ads();
 
     res.render('ads/add_edit', {
-        title: 'Add a new Item',
+        title: 'Add a New Item',
         item: newItem
     })          
 }
@@ -107,7 +108,7 @@ module.exports.processAddPage = (req, res, next) => {
         {
             // refresh the book list
             console.log(item);
-            res.redirect('ads/list');
+            res.redirect('/ads/list');
         }
     });
 
@@ -127,7 +128,7 @@ module.exports.performDelete = (req, res, next) => {
         else
         {
             // refresh the book list
-            res.redirect('ads/list');
+            res.redirect('/ads/list');
         }
     });
 }
