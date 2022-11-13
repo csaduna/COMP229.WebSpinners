@@ -1,8 +1,23 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+html {
+  text-align: center;
 }
 
-a {
-  color: #00B7FF;
+main {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
+
+.navbar navbar-expand bg-dark navbar-dark {
+  width: 75%;
+  margin: auto;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
