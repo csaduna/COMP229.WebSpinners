@@ -5,8 +5,8 @@ let adModel = mongoose.Schema(
     {
         item: String,
         qty: Number,
-        tags: [],
         status: String,
+        desc: String,
         size: {
             l: Number,
             w: Number,

@@ -70,7 +70,7 @@
                             <label for="uomTextField">Unit of Measure</label>
                             <input type="text" class="form-control"
                             id="uomTextField"
-                            placeholder="cm"
+                            placeholder="Enter units"
                             name="size_uom" 
                             value="<%= item.size.uom %>"
                             required>
@@ -79,14 +79,13 @@
                 </div>                
                 <br />
                 <div class="form-group">
-                    <label for="tagTextArea">Tags <span class="text-muted">[use , to separate tags]</span></label>
-                    <textarea type="text" class="form-control"
-                    id="tagTextArea"
-                    placeholder="Enter the tags of the item"
-                    name="tags" 
+                    <label for="descTextField">Description </label>
+                    <input type="text" class="form-control"
+                    id="descTextField"
+                    placeholder="Enter the description of the item"
+                    name="desc" 
+                    value="<%= item.desc %>"
                     required>
-                    <%= item.tags %>
-                    </textarea>
                 </div>
                 <br/>
 

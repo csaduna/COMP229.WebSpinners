@@ -49,12 +49,12 @@ module.exports.processEditPage = (req, res, next) => {
         item: req.body.item,
         qty: req.body.qty,
         status: req.body.status,
+        desc: req.body.desc,
         size : {
             l: req.body.size_l,
             w: req.body.size_w,
             uom: req.body.size_uom,
-        },
-        tags: req.body.tags.split(",").map(word => word.trim())
+        }
     });
 
     // console.log(updatedItem);
@@ -90,12 +90,12 @@ module.exports.processAddPage = (req, res, next) => {
         item: req.body.item,
         qty: req.body.qty,
         status: req.body.status,
+        desc: req.body.desc,
         size : {
             l: req.body.size_l,
             w: req.body.size_w,
             uom: req.body.size_uom,
-        },
-        tags: req.body.tags.split(",").map(word => word.trim())
+        }
     });
 
     Ads.create(newItem, (err, item) =>{
