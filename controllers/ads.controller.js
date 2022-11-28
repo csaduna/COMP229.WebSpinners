@@ -1,5 +1,5 @@
 // create a reference to the model
-const { response } = require('../config/app');
+const { response } = require('../app');
 let Ads = require('../models/ads.model');
 
 exports.adsList = function(req, res, next) {  
