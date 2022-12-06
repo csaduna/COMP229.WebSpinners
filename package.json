@@ -26,7 +26,6 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
-    "angular": "^1.8.3",
     "bootstrap": "^5.2.2",
     "connect-flash": "^0.1.1",
     "cookie-parser": "~1.4.4",
