@@ -1,7 +1,7 @@
 export class Ads {
 
     constructor(
-        public id?: number,
+        public _id?: number,
         public item?: string,
         public qty?: number,
         public status?: string,
