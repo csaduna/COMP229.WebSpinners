@@ -1,0 +1,62 @@
+<!-- File Name: list.ejs
+Name: Christian Aduna
+Student ID: 301250889
+Date: 12 November 2022 -->
+
+<% include ../partials/header.ejs %>
+
+<!-- <%= AdsList %> -->
+
+  <!-- Main Content -->
+  <main class="container">
+    <div class="row">
+        <h1><%= title %></h1>
+        <br>
+        <div>
+            <a href="/ads/add" class="btn btn-primary align-self-end" role="button">
+                <i class="fas fa-plus-circle"></i> 
+                Add a New Item
+            </a>                
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover">
+                <!-- Header Row-->
+                <tr>
+                    <th class="text-center">Item</th>
+                    <th class="text-center">Qty</th>
+                    <th class="text-center">Status</th>
+                    <th>Size</th>
+                    <th class="text-center">Description</th>
+                    <th class="text-center" colspan="2">Actions</th>
+                </tr>
+
+                <!-- Repeatable Template Row -->
+
+                <% for(let count = 0; count < AdsList.length; count++) { %>
+                    <tr>
+                        <td class="text-center"><%= AdsList[count].item %></td>
+                        <td class="text-center"><%= AdsList[count].qty %></td>
+                        <td class="text-center"><%= AdsList[count].status %></td>
+                        <td>
+                            Length: <%= AdsList[count].size.l %><br/>
+                            Width: <%= AdsList[count].size.w %><br/>
+                            UOM: <%= AdsList[count].size.uom %><br/>
+                        </td>
+                        <td class="text-center"><%= AdsList[count].desc %></td>
+                        <td class="text-center">
+                            <a href="/ads/edit/<%= AdsList[count]._id %>" class="btn btn-primary btn-sm">
+                            <i class="fas fa-pencil-alt"></i></a>
+                        </td>
+                        <td class="text-center">
+                            <a href="/ads/delete/<%= AdsList[count]._id %>" class="btn btn-danger btn-sm">
+                            <i class="fas fa-trash-alt"></i></a>
+                        </td>
+                    </tr>
+                <% } %>
+            </table>
+        </div>
+    </div>
+  </main>
+
+  <% include ../partials/footer.ejs %>
