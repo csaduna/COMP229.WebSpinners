@@ -3,9 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 
-import { IndexModule } from './products/index.module';
-import { IndexComponent } from './products/index.component';
-import { PartialsModule } from './products/partials/partials.module';
+import { IndexModule } from './ads/index.module';
+import { IndexComponent } from './ads/index.component';
+import { PartialsModule } from './ads/partials/partials.module';
 
 @NgModule({
   declarations: [

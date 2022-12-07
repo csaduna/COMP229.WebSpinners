@@ -1,5 +1,6 @@
 // create a reference to the model
 const { response } = require('../app');
+const { updateOne } = require('../models/ads.model');
 let Ads = require('../models/ads.model');
 
 exports.adsList = function(req, res, next) {  
@@ -63,13 +64,18 @@ module.exports.processEditPage = (req, res, next) => {
         if(err)
         {
             console.log(err);
-            res.end(err);
+            // res.end(err);
+            return res.status(400).jason({
+                success: false,
+                message: getErrorMessage(err)
+            });
         }
         else
         {
             // console.log(req.body);
             // refresh the book list
-            res.redirect('/ads/list');
+            // res.redirect('/ads/list');
+            return res.status(200).jason(updateItem);
         }
     });
 }
@@ -123,12 +129,20 @@ module.exports.performDelete = (req, res, next) => {
         if(err)
         {
             console.log(err);
-            res.end(err);
+            //res.end(err);
+            return res.status(400).jason({
+                success: false,
+                message: getErrorMessage(err)
+            });
         }
         else
         {
             // refresh the book list
-            res.redirect('/ads/list');
+            // res.redirect('/ads/list');
+            return res.status(200).jason({
+                success: true,
+                message: "Item Removed Successfully"
+            });
         }
     });
 }
