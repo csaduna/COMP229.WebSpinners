@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 
 import { IndexModule } from './products/index.module';
 import { IndexComponent } from './products/index.component';
+import { PartialsModule } from './products/partials/partials.module';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { IndexComponent } from './products/index.component';
   imports: [
     BrowserModule,
     IndexModule,
+    PartialsModule,
     RouterModule.forRoot([
       { path: "", component: IndexComponent },
       // { path: "inventory/list", component: ListComponent },

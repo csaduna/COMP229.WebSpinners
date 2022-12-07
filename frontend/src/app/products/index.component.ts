@@ -6,8 +6,6 @@ import { Component } from '@angular/core';
 })
 
 export class IndexComponent {
-    
-    public title: string = "Index Page"
 
     constructor() { }
 
