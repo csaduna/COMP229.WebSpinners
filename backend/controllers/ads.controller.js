@@ -65,7 +65,7 @@ module.exports.processEditPage = (req, res, next) => {
         {
             console.log(err);
             // res.end(err);
-            return res.status(400).jason({
+            return res.status(400).json({
                 success: false,
                 message: getErrorMessage(err)
             });
@@ -75,7 +75,7 @@ module.exports.processEditPage = (req, res, next) => {
             // console.log(req.body);
             // refresh the book list
             // res.redirect('/ads/list');
-            return res.status(200).jason(updateItem);
+            return res.status(200).json(updateItem);
         }
     });
 }
@@ -130,7 +130,7 @@ module.exports.performDelete = (req, res, next) => {
         {
             console.log(err);
             //res.end(err);
-            return res.status(400).jason({
+            return res.status(400).json({
                 success: false,
                 message: getErrorMessage(err)
             });
@@ -139,7 +139,7 @@ module.exports.performDelete = (req, res, next) => {
         {
             // refresh the book list
             // res.redirect('/ads/list');
-            return res.status(200).jason({
+            return res.status(200).json({
                 success: true,
                 message: "Item Removed Successfully"
             });
