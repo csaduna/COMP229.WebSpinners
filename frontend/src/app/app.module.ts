@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-
+import { ListComponent } from './ads/ads/list.component';
 import { IndexModule } from './ads/index.module';
 import { IndexComponent } from './ads/index.component';
 import { PartialsModule } from './ads/partials/partials.module';
+import { AdsModule } from './ads/ads/ads.module';
 
 @NgModule({
   declarations: [
@@ -15,9 +16,10 @@ import { PartialsModule } from './ads/partials/partials.module';
     BrowserModule,
     IndexModule,
     PartialsModule,
+    AdsModule,
     RouterModule.forRoot([
       { path: "", component: IndexComponent },
-      // { path: "inventory/list", component: ListComponent },
+      { path: "ads/list", component: ListComponent },
       // { path: "inventory/:mode", component: AddEditComponent, canActivate: [AuthGuard]},
       // { path: "inventory/:mode/:id", component: AddEditComponent, canActivate: [AuthGuard]},
       // { path: "users/signin", component: SignInComponent },

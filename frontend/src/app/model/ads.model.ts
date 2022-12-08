@@ -1,7 +1,7 @@
 export class Ads {
 
     constructor(
-        public _id?: number,
+        public _id?: string,
         public item?: string,
         public qty?: number,
         public status?: string,
@@ -18,3 +18,12 @@ export class Size {
         public uom?: string
     ){}
 }
+
+// For Adding:
+// {
+//     "size": { "l": 5, "w": 1, "uom": "INCHES" },
+//     "item": "GLASSES",
+//     "qty": 1,
+//     "status": "AVAILABLE",
+//     "desc": "PRE- LOVED ITEM"
+// }

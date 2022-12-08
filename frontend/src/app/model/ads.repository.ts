@@ -22,7 +22,7 @@ export class AdsRepository {
     }
 
     saveAds(item: Ads) {
-        if (item._id == null){
+        if (item._id == null || item._id == ""){
             this.dataSource.insertAds(item)
             .subscribe(p => this.ads.push(p));
         } else {
