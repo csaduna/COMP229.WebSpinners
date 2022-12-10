@@ -28,9 +28,11 @@ Date: 07 November 2022 -->
               </a>
             </li>                      
             <li class="nav-item">
-                  <a class="nav-link" routerLink="/users/login">
+                  <!-- <a class="nav-link" routerLink="/users/login">
                   <i class="fas fa-user"></i> Login 
-              </a>
+              </a> -->
+              <a *ngIf="auth.username != null" class="nav-link" routerLink="" (click)="logout()">Logout ({{ auth.username }})</a>
+              <a *ngIf="auth.username == null" class="nav-link" routerLink="/users/login">Login</a>
             </li>
              
           </ul>

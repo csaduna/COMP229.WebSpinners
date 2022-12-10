@@ -3,26 +3,27 @@ Name: Christian Aduna
 Student ID: 301250889
 Date: 12 November 2022 -->
 
-<% include ../partials/header.ejs %>
+<app-header></app-header>
 
 <!-- Content for the Add_Edit page -->
 <div class="container">
     <div class="row">
         <div class="offset-md-3 col-md-6">
-            <h1><%= title %></h1>
+            <!-- <h1><%= title %></h1> -->
+            <h1>{{editing ? "Edit" : "Add a new"}} Item</h1>
 
-            <form class="form" method="POST">
+            <form novalidate #form="ngForm" (ngSubmit)="save(form)">
                 <div class="form-group">
                     <input type="hidden"
                         name="id"
-                        value="<%= item._id %>"
+                        [(ngModel)]="item._id"
                     >
                     <label for="itemTextField">Item Name</label>
                     <input type="text" class="form-control"
                         id="itemTextField"
                         placeholder="Enter the item name"
                         name="item" 
-                        value="<%= item.item %>"
+                        [(ngModel)]="item.item"
                         required>
                 </div>
                 <br />
@@ -32,7 +33,7 @@ Date: 12 November 2022 -->
                     id="QtyTextField"
                     placeholder="Enter quantity"
                     name="qty" 
-                    value="<%= item.qty %>"
+                    [(ngModel)]="item.qty"
                     required>
                 </div>
                 <br />
@@ -42,7 +43,7 @@ Date: 12 November 2022 -->
                     id="statusTextField"
                     placeholder="Enter available or unavailable"
                     name="status" 
-                    value="<%= item.status %>"
+                    [(ngModel)]="item.status"
                     >
                 </div>
                 <br />
@@ -56,7 +57,7 @@ Date: 12 November 2022 -->
                             id="lengthTextField"
                             placeholder="Enter length"
                             name="size_l" 
-                            value="<%= item.size.l %>"
+                            [(ngModel)]="item.size.l"
                             required>
                         </div>
 
@@ -67,7 +68,7 @@ Date: 12 November 2022 -->
                             id="widthTextField"
                             placeholder="Enter width"
                             name="size_w" 
-                            value="<%= item.size.w %>"
+                            [(ngModel)]="item.size.w"
                             required>
                         </div>
 
@@ -77,7 +78,7 @@ Date: 12 November 2022 -->
                             id="uomTextField"
                             placeholder="Enter units"
                             name="size_uom" 
-                            value="<%= item.size.uom %>"
+                            [(ngModel)]="item.size.uom"
                             required>
                         </div>
                     </div>                    
@@ -89,7 +90,7 @@ Date: 12 November 2022 -->
                     id="descTextField"
                     placeholder="Enter the description of the item"
                     name="desc" 
-                    value="<%= item.desc %>">
+                    [(ngModel)]="item.size.uom">
                 </div>
                 <br/>
 
@@ -98,7 +99,7 @@ Date: 12 November 2022 -->
                     Submit
                 </button>
                 
-                <a href="/ads/list" class="btn btn-warning">
+                <a routerLink="/ads/list" class="btn btn-warning">
                     <i class="fas fa-undo"></i> 
                     Cancel
                 </a>
@@ -109,4 +110,4 @@ Date: 12 November 2022 -->
     </div>
 </div>
 
-<% include ../partials/footer.ejs %>
+<app-footer></app-footer>

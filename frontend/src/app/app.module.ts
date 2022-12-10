@@ -8,6 +8,10 @@ import { IndexComponent } from './ads/index.component';
 import { PartialsModule } from './ads/partials/partials.module';
 import { AdsModule } from './ads/ads/ads.module';
 import { AuthModule } from './ads/auth/auth_module';
+import { SignInComponent } from './ads/auth/login.component';
+import { RegisterComponent } from './ads/auth/register.component';
+import { AuthGuard } from './ads/auth/auth.guard';
+import { AddEditComponent } from './ads/ads/add_edit.component';
 
 @NgModule({
   declarations: [
@@ -22,10 +26,10 @@ import { AuthModule } from './ads/auth/auth_module';
     RouterModule.forRoot([
       { path: "", component: IndexComponent },
       { path: "ads/list", component: ListComponent },
-      // { path: "inventory/:mode", component: AddEditComponent, canActivate: [AuthGuard]},
-      // { path: "inventory/:mode/:id", component: AddEditComponent, canActivate: [AuthGuard]},
-      // { path: "users/signin", component: SignInComponent },
-      // { path: "users/signup", component: SignUpComponent },
+      { path: "ads/:mode", component: AddEditComponent, canActivate: [AuthGuard]},
+      { path: "ads/:mode/:id", component: AddEditComponent, canActivate: [AuthGuard]},
+      { path: "users/login", component: SignInComponent },
+      { path: "users/register", component: RegisterComponent },
       { path:"**", redirectTo: "" }
     ])
   ],

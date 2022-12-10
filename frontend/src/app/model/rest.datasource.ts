@@ -16,11 +16,12 @@ export class RestDataSource {
     auth_token: string;
 
     constructor(private http: HttpClient) {
-        this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}/`;
+        // this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}`;
+        this.baseUrl = 'https://webspinners.herokuapp.com/'
     }
 
     getAdsList(): Observable<Ads[]> {
-        return this.http.get<Ads[]>(this.baseUrl + 'ads/list');
+        return this.http.get<Ads[]>(this.baseUrl + 'ads/list', this.getOptions());
     }
 
     insertAds(item: Ads): Observable<Ads> {
@@ -59,7 +60,6 @@ export class RestDataSource {
     private getOptions(){
         return{
             headers: new HttpHeaders({
-                "Authorization": `Bearer ${this.auth_token}`,
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin': '*',
                 'Access-control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'

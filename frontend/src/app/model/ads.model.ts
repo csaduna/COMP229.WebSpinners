@@ -6,7 +6,8 @@ export class Ads {
         public qty?: number,
         public status?: string,
         public desc?: string,
-        public size?: Size       
+        public size?: Size ,
+        public qaList?: QA[]      
     ) {}
     
 }
@@ -16,6 +17,13 @@ export class Size {
         public l?: number,
         public w?: number,
         public uom?: string
+    ){}
+}
+
+export class QA {
+    constructor(
+        public qs?: string,
+        public ans?: string
     ){}
 }
 

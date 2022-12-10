@@ -4,12 +4,12 @@ import { FormsModule } from "@angular/forms";
 import { ModelModule } from "src/app/model/model.module";
 import { PartialsModule } from "../partials/partials.module";
 import { SignInComponent } from "./login.component";
-//import { SignUpComponent } from "./signup.component";
+import { RegisterComponent } from "./register.component";
 
 @NgModule({
     imports: [ModelModule, BrowserModule, FormsModule, PartialsModule],
-    declarations: [SignInComponent], //SignUpComponent,
-    exports: [SignInComponent]
+    declarations: [SignInComponent, RegisterComponent], 
+    exports: [SignInComponent, RegisterComponent]
 })
 
 export class AuthModule {}
