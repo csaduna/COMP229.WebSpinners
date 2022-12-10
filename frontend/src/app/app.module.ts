@@ -7,6 +7,7 @@ import { IndexModule } from './ads/index.module';
 import { IndexComponent } from './ads/index.component';
 import { PartialsModule } from './ads/partials/partials.module';
 import { AdsModule } from './ads/ads/ads.module';
+import { AuthModule } from './ads/auth/auth_module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { AdsModule } from './ads/ads/ads.module';
     IndexModule,
     PartialsModule,
     AdsModule,
+    AuthModule,
     RouterModule.forRoot([
       { path: "", component: IndexComponent },
       { path: "ads/list", component: ListComponent },
