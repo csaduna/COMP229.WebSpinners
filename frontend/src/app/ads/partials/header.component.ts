@@ -1,11 +1,16 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/model/auth.service';
+import { Injectable } from '@angular/core';
 
 
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html'
+})
+
+@Injectable({
+    providedIn: 'root'
 })
 
 export class HeaderComponent {
@@ -18,4 +23,7 @@ export class HeaderComponent {
             this.router.navigateByUrl("/");
         }
     }
-}
+
+    }
+
+

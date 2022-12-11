@@ -22,7 +22,7 @@ export class RegisterComponent {
                 this.auth.signupUser(this.user)
             .subscribe(response => {
                 if (response.success) {
-                    alert(response.message)
+                    alert(response.message);
                     this.router.navigateByUrl("/users/login");
                 }
                 this.message = response.message;

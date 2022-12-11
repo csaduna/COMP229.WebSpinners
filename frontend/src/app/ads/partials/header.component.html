@@ -18,21 +18,21 @@ Date: 07 November 2022 -->
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
           <ul class="navbar-nav">
             <li class="nav-item">              
-                  <a class="nav-link" routerLink="">                       
+                  <a class="nav-link" routerLink=""  routerLinkActive="active">                       
                   <i class="fas fa-home"></i> Home 
               </a>
             </li>
             <li class="nav-item">
-                  <a class="nav-link" routerLink="/ads/list">          
+                  <a class="nav-link" routerLink="/ads/list"  routerLinkActive="active">          
                   <i class="fas fa-shop"></i> Ads 
               </a>
             </li>                      
             <li class="nav-item">
-                  <!-- <a class="nav-link" routerLink="/users/login">
+                  <a *ngIf="auth.username == null" class="nav-link" routerLink="/users/login"  routerLinkActive="active">
                   <i class="fas fa-user"></i> Login 
-              </a> -->
+              </a>
               <a *ngIf="auth.username != null" class="nav-link" routerLink="" (click)="logout()">Logout ({{ auth.username }})</a>
-              <a *ngIf="auth.username == null" class="nav-link" routerLink="/users/login">Login</a>
+              
             </li>
              
           </ul>

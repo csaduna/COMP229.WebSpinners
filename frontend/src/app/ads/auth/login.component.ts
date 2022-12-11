@@ -14,10 +14,9 @@ export class SignInComponent {
 
     constructor(private router: Router,
         private auth: AuthService){ }
-    authenticate(form: NgForm) {
+    authentication(form: NgForm) {
         if (form.valid) {
-            this.auth.authenticate(this.username, this.password)
-            .subscribe(response => {
+            this.auth.authenticate(this.username, this.password).subscribe(response => {
                 if (response) {
                     this.router.navigateByUrl(this.auth.redirectUrl || "");
                 }

@@ -16,8 +16,8 @@ export class RestDataSource {
     auth_token: string;
 
     constructor(private http: HttpClient) {
-        // this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}`;
-        this.baseUrl = 'https://webspinners.herokuapp.com/'
+        this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}`;
+        //  this.baseUrl = 'https://webspinners.herokuapp.com/'
     }
 
     getAdsList(): Observable<Ads[]> {
@@ -41,8 +41,8 @@ export class RestDataSource {
             }));
     }
 
-    authentication(username: string, pass: string): Observable<boolean> {
-        return this.http.post<any>(this.baseUrl + "users/login", {
+    authenticate(username: string, pass: string): Observable<boolean> {
+        return this.http.post<any>(this.baseUrl + "/users/login", {
             username:username, password: pass
         }).pipe(map(response => {
                 this.auth_token = response.success ? response.token : null;
