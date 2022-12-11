@@ -65,21 +65,21 @@ module.exports.register = function(req, res, next) {
         let message = getErrorMessage(err);
 
         req.flash('error', message);
-        return res.render('auth/login', {
-          title: 'Login',
+        return res.render('auth/register', {
+          title: 'Register Form',
           messages: req.flash('error'),
           user: user
         });
-      } else {
-        return res.redirect('/');
       }
-    });
-    req.login(user, (err) => {
+      req.login(user, (err) => {
         if (err) return next(err);
         return res.redirect('/');
+      });
     });
+  } else {
+    return res.redirect('/');
+  }
     
-}
 };
 
 module.exports.logout = function(req, res, next) {
@@ -94,9 +94,9 @@ module.exports.logout = function(req, res, next) {
 
 module.exports.login = function(req, res, next){
   passport.authenticate('local', {   
-    successRedirect: req.session.url || '/ads/list',
+    successRedirect: req.session.url || '/',
     failureRedirect: '/users/login',
     failureFlash: true
-  });
+  })(req, res, next);
   delete req.session.url;
 }

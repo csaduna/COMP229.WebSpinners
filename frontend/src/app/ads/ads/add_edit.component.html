@@ -1,0 +1,113 @@
+<!-- File Name: add_edit.ejs
+Name: Christian Aduna
+Student ID: 301250889
+Date: 12 November 2022 -->
+
+<app-header></app-header>
+
+<!-- Content for the Add_Edit page -->
+<div class="container">
+    <div class="row">
+        <div class="offset-md-3 col-md-6">
+            <!-- <h1><%= title %></h1> -->
+            <h1>{{editing ? "Edit" : "Add a new"}} Item</h1>
+
+            <form novalidate #form="ngForm" (ngSubmit)="save(form)">
+                <div class="form-group">
+                    <input type="hidden"
+                        name="id"
+                        [(ngModel)]="item._id"
+                    >
+                    <label for="itemTextField">Item Name</label>
+                    <input type="text" class="form-control"
+                        id="itemTextField"
+                        placeholder="Enter the item name"
+                        name="item" 
+                        [(ngModel)]="item.item"
+                        required>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="QtyTextField">Quantity</label>
+                    <input type="number" class="form-control"
+                    id="QtyTextField"
+                    placeholder="Enter quantity"
+                    name="qty" 
+                    [(ngModel)]="item.qty"
+                    required>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="statusTextField">Status</label>
+                    <input type="text" class="form-control"
+                    id="statusTextField"
+                    placeholder="Enter available or unavailable"
+                    name="status" 
+                    [(ngModel)]="item.status"
+                    >
+                </div>
+                <br />
+                <div class="card">
+                    <div class="card-header">Size</div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="lengthTextField">Length</label>
+                            <input type="number" step="0.01" 
+                            class="form-control"
+                            id="lengthTextField"
+                            placeholder="Enter length"
+                            name="size_l" 
+                            [(ngModel)]="item.size.l"
+                            required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="widthTextField">Width</label>
+                            <input type="number" step="0.01"
+                            class="form-control"
+                            id="widthTextField"
+                            placeholder="Enter width"
+                            name="size_w" 
+                            [(ngModel)]="item.size.w"
+                            required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="uomTextField">Unit of Measure</label>
+                            <input type="text" class="form-control"
+                            id="uomTextField"
+                            placeholder="Enter units"
+                            name="size_uom" 
+                            [(ngModel)]="item.size.uom"
+                            required>
+                        </div>
+                    </div>                    
+                </div>                
+                <br />
+                <div class="form-group">
+                    <label for="descTextField">Description </label>
+                    <input type="text" class="form-control"
+                    id="descTextField"
+                    placeholder="Enter the description of the item"
+                    name="desc" 
+                    [(ngModel)]="item.size.uom">
+                </div>
+                <br/>
+
+                <button class="btn btn-primary" type="submit">
+                    <i class="fas fa-edit"></i> 
+                    Submit
+                </button>
+                
+                <a routerLink="/ads/list" class="btn btn-warning">
+                    <i class="fas fa-undo"></i> 
+                    Cancel
+                </a>
+
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<app-footer></app-footer>

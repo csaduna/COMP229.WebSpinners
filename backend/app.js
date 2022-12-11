@@ -21,6 +21,28 @@ app.use(session({
   secret: "sessionSecret"
 }));
 
+
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE"
+  );
+  res.setHeader(
+    "responseType",
+    "text"
+  );
+  next();
+});
+
+app.options('/*', (_, res) => {
+  res.sendStatus(200);
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

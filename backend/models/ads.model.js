@@ -11,7 +11,8 @@ let adModel = mongoose.Schema(
             l: Number,
             w: Number,
             uom: String
-        }
+        },
+        qaList: []
     },
     {
         collection: "ads"
