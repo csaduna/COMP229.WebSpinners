@@ -10,6 +10,8 @@ import { AdsRepository } from '../../model/ads.repository';
 })
 
 export class AddEditComponent {
+
+    title: string = 'Add a new Item';
     editing: boolean = false;
     item: Ads = new Ads();
 

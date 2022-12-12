@@ -6,30 +6,61 @@ import { RestDataSource } from "./rest.datasource";
 @Injectable()
 export class AdsRepository {
     private ads: Ads[] = [];
+    public listReady: boolean = false;
 
     constructor(private dataSource: RestDataSource) {
-        dataSource.getAdsList().subscribe(data => {
-            this.ads = data;
-        });
+        // dataSource.getAdsList().subscribe(data => {
+        //     this.ads = data;
+        // });
     }
 
     getAds(): Ads[] {
         return this.ads;
     }
 
-    getItem(id: string): Ads {
-        return (this.ads.find(item => item._id === id)!);
+    setAds(){
+        this.listReady = false;
+        this.dataSource.getAdsList().subscribe(data => {
+            this.ads = data;
+            this.listReady = true;
+        });
     }
 
-    saveAds(item: Ads) {
-        if (item._id == null || item._id == ""){
+    getItem(id: string): Ads {
+        return Object.assign({}, this.ads.find(i => i._id === id)!);        
+    }
+
+    async saveAds(item: Ads) {
+
+        // If it does not have id, then create a new item.
+        if (item._id == null || item._id == "") {
             this.dataSource.insertAds(item)
-            .subscribe(p => this.ads.push(p));
+                .subscribe(response => {
+                    if(response._id) // If API created
+                    {
+                        this.ads.push(response);
+                    }
+                    else{ // If API send error.
+                        // Convert into ResponseModel to get the error message.
+                        let error = response as ResponseModel;  
+                        alert(`Error: ${error.message}`);
+                    }
+                });
         } else {
-            this.dataSource.updateAds(item)
-            .subscribe(p => {
-                this.ads.splice(this.ads
-                    .findIndex(i => i._id == item._id), 1, item);
+            // If it has id, then update a existing item.
+            this.dataSource.updateAds(item).subscribe(resp => {
+
+                // Convert into ResponseModel to get the error message.
+                let response = resp as ResponseModel;
+                if (response.success == true) {
+                    console.log(`Sucess: ${response.success}`);
+                    this.ads.splice(this.ads.
+                        findIndex(i => i._id == item._id), 1, item);
+                }
+                else{
+                    // If API send error.
+                    alert(`Error: ${response.message}`);
+                }        
             });
         }
     }

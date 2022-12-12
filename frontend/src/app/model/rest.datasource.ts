@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable } from "rxjs";
-import { map } from "rxjs/operators";
+import { Observable, of } from "rxjs";
+import { catchError, map } from "rxjs/operators";
 import { Ads } from "./ads.model";
 import { ResponseModel } from "./response.model";
 import { User } from "./user.model";
@@ -16,17 +16,28 @@ export class RestDataSource {
     auth_token: string;
 
     constructor(private http: HttpClient) {
+<<<<<<< Updated upstream
         this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}`;
         //  this.baseUrl = 'https://webspinners.herokuapp.com/'
+=======
+        this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}/`;
+        //this.baseUrl = 'https://webspinners.herokuapp.com/'
+>>>>>>> Stashed changes
     }
 
     getAdsList(): Observable<Ads[]> {
-        return this.http.get<Ads[]>(this.baseUrl + 'ads/list', this.getOptions());
+        return this.http.get<Ads[]>(this.baseUrl + 'ads/list');
     }
 
     insertAds(item: Ads): Observable<Ads> {
         return this.http.post<Ads>(this.baseUrl + 'ads/add', 
-            item, this.getOptions());
+            item, this.getOptions()).pipe(map(response => {
+                return response;
+            }),
+            catchError(error => {
+                console.log(error.error);
+                return of(error.error);
+            }));;
     }
 
     updateAds(item: Ads): Observable<Ads> {

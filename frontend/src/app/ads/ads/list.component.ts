@@ -10,11 +10,23 @@ import { AdsRepository } from '../../model/ads.repository';
 
 export class ListComponent {
 
-    constructor(private repository: AdsRepository,
-        private router: Router) { }
+    // constructor(private repository: AdsRepository,
+    //     private router: Router) { }
+
+    // get adsList(): Ads[] {
+    //     return this.repository.getAds();
+    // }
+
+    // title = 'Ads List';    
+
+    constructor(public repository: AdsRepository,
+        private router: Router) 
+    {
+        repository.setAds();
+    }    
 
     get adsList(): Ads[] {
-        return this.repository.getAds();
+        return this.repository.getAds();        
     }
 
     deleteMethod(id: string) {
