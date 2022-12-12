@@ -34,6 +34,6 @@ router.post('/add', requireAuth, adsController.processAddPage);
 router.get('/delete/:id', requireAuth, adsController.performDelete);
 
 // Route for Questions
-//router.get('/qa/:id', adsController.qaList);
+router.get('/add/:id', requireAuth, adsController.performDelete);
 
 module.exports = router;
