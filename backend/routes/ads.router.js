@@ -33,5 +33,7 @@ router.post('/add', requireAuth, adsController.processAddPage);
 // Route for Delete
 router.get('/delete/:id', requireAuth, adsController.performDelete);
 
+// Route for Questions
+//router.get('/qa/:id', adsController.qaList);
 
 module.exports = router;
