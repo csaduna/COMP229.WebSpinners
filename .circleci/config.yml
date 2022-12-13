@@ -5,23 +5,53 @@ version: 2.1
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  deploy:
+  build-job:
+
+  deploy-job:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
       - image: cimg/base:stable
+        auth:
+          username: #dockerhub_username
+          password: #dockethub_password
+    resource_class: large
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
       # Get the code from the GitHub repo
       - checkout
       - run:
-          name: "Say hello"
-          command: "echo Hello, World!"
+          name: Move to working dir
+          command: cd frontend
+      
+      - run:
+          name: Install Node.js
+          command: apt-get install -y nodejs
 
+      - run:
+          name: Install Dependencies
+          command: |
+            npm install
+      
+      - run:
+          name: Create the Environment file
+          command: |          
+            echo -e "${ENV_FILE}" > ./src/environments/environment.prod.ts 
+      - run:
+          name: Build Angular app
+          command: |
+            npm run build
+      - run:
+          name: Removes the devDependencies
+          command: |
+            npm prune --production
+      - run:
+            name: Deploy to Firebase
+            command: firebase deploy --token "1//01UJ-7lGhVcljCgYIARAAGAESNwF-L9IrN0jthrzAdwzvXXx41mAe_ieitW4I2K1liNFjzL9YUkXg61zYvp6EkZPep3-28CS8GT4"
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
   deploy-workflow:
     jobs:
-      - deploy
+      - deploy-job
