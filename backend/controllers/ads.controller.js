@@ -75,7 +75,7 @@ module.exports.processEditPage = (req, res, next) => {
             // console.log(req.body);
             // refresh the book list
             // res.redirect('/ads/list');
-            return res.status(200).json(updateItem);
+            return res.status(200).json(updatedItem);
         }
     });
 }
@@ -146,3 +146,55 @@ module.exports.performDelete = (req, res, next) => {
         }
     });
 }
+
+module.exports.displayQaPage = (req, res, next) => {
+    let id = req.params.id;
+
+    Ads.findById(id, (err, itemToEdit) => {
+        if(err)
+        {
+            console.log(err);
+            res.end(err);
+        }
+        else
+        {
+            //show the edit view
+            res.render('ads/qa', {
+                title: 'Questions & Answers', 
+                item: itemToEdit
+            })
+        }
+    });
+}
+
+module.exports.processQaPage = (req, res, next) => {
+    let id = req.params.id
+
+    let updatedMessage = Ads({
+        _id: req.body.id,
+        qaList: []
+        }
+    );
+
+    // console.log(updatedItem);
+
+    Ads.updateOne({_id: id}, updatedMessage, (err) => {
+        if(err)
+        {
+            console.log(err);
+            // res.end(err);
+            return res.status(400).json({
+                success: false,
+                message: getErrorMessage(err)
+            });
+        }
+        else
+        {
+            // console.log(req.body);
+            // refresh the book list
+            // res.redirect('/ads/list');
+            return res.status(200).json(updatedMessage);
+        }
+    });
+}
+
