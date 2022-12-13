@@ -5,18 +5,9 @@ version: 2.1
 # Define a job to be invoked later in a workflow.
 # See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
+  build-job:
+
   deploy-job:
-      docker:
-        - image: <docker-image-name-tag>
-          auth:
-            username: mydockerhub-user
-            password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
-      working_directory: /tmp/my-project
-      steps:
-        - run:
-            name: Deploy Main to Firebase
-            command: ./node_modules/.bin/firebase deploy --token=1//01UJ-7lGhVcljCgYIARAAGAESNwF-L9IrN0jthrzAdwzvXXx41mAe_ieitW4I2K1liNFjzL9YUkXg61zYvp6EkZPep3-28CS8GT4    
-  deploy:
     # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
     docker:
@@ -55,10 +46,12 @@ jobs:
           name: Removes the devDependencies
           command: |
             npm prune --production
-
+      - run:
+            name: Deploy to Firebase
+            command: firebase deploy --token "1//01UJ-7lGhVcljCgYIARAAGAESNwF-L9IrN0jthrzAdwzvXXx41mAe_ieitW4I2K1liNFjzL9YUkXg61zYvp6EkZPep3-28CS8GT4"
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
   deploy-workflow:
     jobs:
-      - deploy
+      - deploy-job
