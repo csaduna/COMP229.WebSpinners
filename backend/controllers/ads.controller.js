@@ -21,6 +21,24 @@ exports.adsList = function(req, res, next) {
     });
 }
 
+exports.qaList = function(req, res, next) {  
+    
+    Ads.find((err, adsList) => {
+        // console.log(qaList);
+        if(err)
+        {
+            return console.error(err);
+        }
+        else
+        {
+            res.render('ads/qapage', {
+                title: 'Questions & Answers', 
+                QaList: qaList
+            })            
+        }
+    });
+}
+
 module.exports.displayEditPage = (req, res, next) => {
     let id = req.params.id;
 
@@ -176,7 +194,7 @@ module.exports.processQaPage = (req, res, next) => {
         }
     );
 
-    // console.log(updatedItem);
+    // console.log(updatedMessage);
 
     Ads.updateOne({_id: id}, updatedMessage, (err) => {
         if(err)
