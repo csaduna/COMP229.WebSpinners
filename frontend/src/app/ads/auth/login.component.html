@@ -13,7 +13,7 @@
                 {{message}}
             </div>  
             <!-- <form action="/users/login" method="post"> -->
-            <form novalidate #form="ngForm" (ngSubmit)="authenticate(form)">
+            <form novalidate #form="ngForm" (ngSubmit)="authentication(form)">
                 <div class="form-group">
                     <label>Username:</label>
                     <input type="text" name="username" [(ngModel)]="username" class="form-control" />
@@ -24,7 +24,7 @@
                 </div>
                 <br>
                 <div class="form-group">
-                    <input class="btn btn-primary" type="submit" value="Login" />                    
+                    <input class="btn btn-primary" type="submit" value="Login"/>                    
                 </div>
                 <br>
                 <div class="form-group">

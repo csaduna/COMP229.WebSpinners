@@ -14,7 +14,7 @@ export class AuthService {
 
         authenticate(username: string, password: string): Observable<boolean>
         {//authentication might need to be authenticate
-            return this.datasource.authentication(username, password)
+            return this.datasource.authenticate(username, password)
             .pipe(map(response => {
                 if(response)
                 {

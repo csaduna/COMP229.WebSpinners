@@ -12,6 +12,9 @@ import { SignInComponent } from './ads/auth/login.component';
 import { RegisterComponent } from './ads/auth/register.component';
 import { AuthGuard } from './ads/auth/auth.guard';
 import { AddEditComponent } from './ads/ads/add_edit.component';
+import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -19,21 +22,14 @@ import { AddEditComponent } from './ads/ads/add_edit.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IndexModule,
     PartialsModule,
     AdsModule,
     AuthModule,
-    RouterModule.forRoot([
-      { path: "", component: IndexComponent },
-      { path: "ads/list", component: ListComponent },
-      { path: "ads/:mode", component: AddEditComponent, canActivate: [AuthGuard]},
-      { path: "ads/:mode/:id", component: AddEditComponent, canActivate: [AuthGuard]},
-      { path: "users/login", component: SignInComponent },
-      { path: "users/register", component: RegisterComponent },
-      { path:"**", redirectTo: "" }
-    ])
+    AppRoutingModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [AuthGuard],
+  bootstrap: [IndexComponent]
 })
 export class AppModule { }

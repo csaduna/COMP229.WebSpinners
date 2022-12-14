@@ -18,22 +18,46 @@ Date: 07 November 2022 -->
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
           <ul class="navbar-nav">
             <li class="nav-item">              
-                  <a class="nav-link" routerLink="">                       
+                  <a class="nav-link" routerLink=""  routerLinkActive="active">                       
                   <i class="fas fa-home"></i> Home 
               </a>
             </li>
-            <li class="nav-item">
-                  <a class="nav-link" routerLink="/ads/list">          
-                  <i class="fas fa-shop"></i> Ads 
+            <li class="nav-item dropdown">
+              <a *ngIf="title == 'Ads List' || title == 'Add a new Item'; else deactiveList"
+                  class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                  <i class="fas fa-shop"></i> Ads
               </a>
-            </li>                      
-            <li class="nav-item">
-                  <!-- <a class="nav-link" routerLink="/users/login">
-                  <i class="fas fa-user"></i> Login 
-              </a> -->
-              <a *ngIf="auth.username != null" class="nav-link" routerLink="" (click)="logout()">Logout ({{ auth.username }})</a>
-              <a *ngIf="auth.username == null" class="nav-link" routerLink="/users/login">Login</a>
+              <!-- <% } else { %> -->
+              <ng-template #deactiveList>
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                  <i class="fas fa-shop"></i> Ads
+                </a>
+              </ng-template>
+              <!-- <% } %>        -->
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" routerLink="/ads/list">
+                    <i class="fa-regular fa-rectangle-list"></i> 
+                    Ads List
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" routerLink="/ads/add">
+                    <i class="fa-solid fa-square-plus"></i>
+                    Add a new Item
+                  </a>
+                </li>
+              </ul>
             </li>
+            <li class="nav-item">
+                  <a class="nav-link" [class.active]="title == 'Users'" href="/users">
+                  <i class="fas fa-user"></i> Users 
+              </a>
+            </li>
+            <li class="nav-item">           
+                <a *ngIf="auth.username != null" class="nav-link" routerLink="" (click)="logout()">Log Out ({{ auth.username }})</a>
+                <a *ngIf="auth.username == null" class="nav-link" routerLink="/users/login">Log In</a>
+            </li> 
              
           </ul>
         </div>

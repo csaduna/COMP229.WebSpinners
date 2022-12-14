@@ -5,13 +5,11 @@ import { Ads, Size } from '../../model/ads.model';
 import { AdsRepository } from '../../model/ads.repository';
 
 @Component({
-    selector: 'add-edit',
-    templateUrl: './add_edit.component.html'
+    selector: 'qa',
+    templateUrl: './qa.component.html'
 })
 
 export class AddEditComponent {
-
-    title: string = 'Add a new Item';
     editing: boolean = false;
     item: Ads = new Ads();
 

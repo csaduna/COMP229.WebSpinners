@@ -6,13 +6,22 @@ var logger = require('morgan');
 var session = require('express-session');
 var flash = require('connect-flash');
 var passport = require('passport');
+let cors = require('cors');
 
-var indexRouter = require('./routes/index.router');
-var usersRouter = require('./routes/users.router');
-var adsRouter = require('./routes/ads.router');
+var indexRouter = require('../routes/index.router');
+var usersRouter = require('../routes/users.router');
+var adsRouter = require('../routes/ads.router');
 
 
 var app = express();
+
+// Enable cors
+app.use(cors());
+app.options('*', cors());
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 //using session secret
 app.use(session({
@@ -21,44 +30,26 @@ app.use(session({
   secret: "sessionSecret"
 }));
 
-
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, PUT, DELETE"
-  );
-  res.setHeader(
-    "responseType",
-    "text"
-  );
-  next();
-});
-
 app.options('/*', (_, res) => {
   res.sendStatus(200);
 });
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'node_modules')));
+app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, '../node_modules')));
 
 // setting up the passport
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
-require('./config/passport')(passport);
+require('./passport')(passport);
 
 //routes
 app.use('/', indexRouter);
@@ -67,7 +58,7 @@ app.use('/ads', adsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  next(createError(404));
+  next(createError(404, "Endpoint not found."));
 });
 
 // error handler
@@ -78,7 +69,13 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  // res.render('error');
+  res.json(
+    {
+      success: false,
+      message: err.message
+    }
+  )
 });
 
 module.exports = app;
