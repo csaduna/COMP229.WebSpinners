@@ -22,16 +22,10 @@ Date: 07 November 2022 -->
                   <i class="fas fa-home"></i> Home 
               </a>
             </li>
-<<<<<<< Updated upstream
-            <li class="nav-item">
-                  <a class="nav-link" routerLink="/ads/list"  routerLinkActive="active">          
-                  <i class="fas fa-shop"></i> Ads 
-=======
             <li class="nav-item dropdown">
               <a *ngIf="title == 'Ads List' || title == 'Add a new Item'; else deactiveList"
                   class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                   <i class="fas fa-shop"></i> Ads
->>>>>>> Stashed changes
               </a>
               <!-- <% } else { %> -->
               <ng-template #deactiveList>
@@ -56,17 +50,9 @@ Date: 07 November 2022 -->
               </ul>
             </li>
             <li class="nav-item">
-<<<<<<< Updated upstream
-                  <a *ngIf="auth.username == null" class="nav-link" routerLink="/users/login"  routerLinkActive="active">
-                  <i class="fas fa-user"></i> Login 
-              </a>
-              <a *ngIf="auth.username != null" class="nav-link" routerLink="" (click)="logout()">Logout ({{ auth.username }})</a>
-              
-=======
                   <a class="nav-link" [class.active]="title == 'Users'" href="/users">
                   <i class="fas fa-user"></i> Users 
               </a>
->>>>>>> Stashed changes
             </li>
             <li class="nav-item">           
                 <a *ngIf="auth.username != null" class="nav-link" routerLink="" (click)="logout()">Log Out ({{ auth.username }})</a>

@@ -16,13 +16,8 @@ export class RestDataSource {
     auth_token: string;
 
     constructor(private http: HttpClient) {
-<<<<<<< Updated upstream
-        this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}`;
-        //  this.baseUrl = 'https://webspinners.herokuapp.com/'
-=======
         this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}/`;
         //this.baseUrl = 'https://webspinners.herokuapp.com/'
->>>>>>> Stashed changes
     }
 
     getAdsList(): Observable<Ads[]> {
