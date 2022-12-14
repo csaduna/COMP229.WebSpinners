@@ -27,6 +27,24 @@ function adsList(req, res, next) {
         res.json(adsCollection);
     });
 }
+
+exports.qaList = function(req, res, next) {  
+    
+    Ads.find((err, adsList) => {
+        // console.log(qaList);
+        if(err)
+        {
+            return console.error(err);
+        }
+        else
+        {
+            res.render('ads/qapage', {
+                title: 'Questions & Answers', 
+                QaList: qaList
+            })            
+        }
+    });
+}
 exports.adsList = adsList;
 
 
@@ -65,7 +83,13 @@ function processAddPage(req, res, next) {
             console.error(err);
             res.end(err);
         }
-        res.json({ success: true, message: 'Successfully created ads!', ads: newAds });
+        else
+        {
+            // console.log(req.body);
+            // refresh the book list
+            // res.redirect('/ads/list');
+            return res.status(200).json(updatedItem);
+        }
     });
 }
 exports.processAddPage = processAddPage;
@@ -200,29 +224,3 @@ function performDelete(req, res, next) {
         res.json({ success: true, message: 'Successfully deleted ads!' });
     });
 }
-exports.performDelete = performDelete;
-
-// module.exports.performDelete = (req, res, next) => {
-//     let id = req.params.id;
-
-//     Ads.remove({_id: id}, (err) => {
-//         if(err)
-//         {
-//             console.log(err);
-//             //res.end(err);
-//             return res.status(400).json({
-//                 success: false,
-//                 message: getErrorMessage(err)
-//             });
-//         }
-//         else
-//         {
-//             // refresh the book list
-//             // res.redirect('/ads/list');
-//             return res.status(200).json({
-//                 success: true,
-//                 message: "Item Removed Successfully"
-//             });
-//         }
-//     });
-// }

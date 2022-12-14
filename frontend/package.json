@@ -21,6 +21,8 @@
     "@auth0/angular-jwt": "^5.1.0",
     "@fortawesome/fontawesome-free": "^6.2.1",
     "bootstrap": "^5.2.3",
+    "circleci": "^0.3.3",
+    "firebase": "^9.15.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
@@ -30,6 +32,7 @@
     "@angular/cli": "~15.0.2",
     "@angular/compiler-cli": "^15.0.0",
     "@types/jasmine": "~4.3.0",
+    "firebase-tools": "^1.2.0",
     "@types/jquery": "^3.5.14",
     "@types/json-server": "^0.14.4",
     "@types/jsonwebtoken": "^8.5.9",

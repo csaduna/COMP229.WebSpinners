@@ -28,7 +28,8 @@ Date: 12 November 2022 -->
                     <th class="text-center">Status</th>
                     <th>Size</th>
                     <th class="text-center">Description</th>
-                    <th class="text-center" colspan="2">Actions</th>
+                    <th class="text-center">Questions & Answers</th>
+                    <th class="text-center" colspan="3">Actions</th>
                 </tr>
 
                 <!-- Repeatable Template Row -->
@@ -44,6 +45,10 @@ Date: 12 November 2022 -->
                             UOM: <%= AdsList[count].size.uom %><br/>
                         </td>
                         <td class="text-center"><%= AdsList[count].desc %></td>
+                        <td class="text-center">
+                            <a href="/ads/qa/<%= AdsList[count]._id %>" class="btn btn-warning btn-sm">
+                            <i class="fa-regular fa-question"></i></a>
+                        </td>
                         <td class="text-center">
                             <a href="/ads/edit/<%= AdsList[count]._id %>" class="btn btn-primary btn-sm">
                             <i class="fas fa-pencil-alt"></i></a>
