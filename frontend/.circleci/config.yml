@@ -22,10 +22,6 @@ jobs:
       # Get the code from the GitHub repo
       - checkout
       - run:
-          name: Move to working dir
-          command: cd frontend
-      
-      - run:
           name: Install Node.js
           command: apt-get install -y nodejs
 
@@ -48,7 +44,7 @@ jobs:
             npm prune --production
       - run:
             name: Deploy to Firebase
-            command: firebase deploy --token "1//01UJ-7lGhVcljCgYIARAAGAESNwF-L9IrN0jthrzAdwzvXXx41mAe_ieitW4I2K1liNFjzL9YUkXg61zYvp6EkZPep3-28CS8GT4"
+            command: firebase deploy --token "1//01jDNvl9xuKVtCgYIARAAGAESNwF-L9IrguNPQzdJ_Ic5nZdFZ30bR9hb5s6HTSLAGXiSaEwpU2LSKtJOX4HV6ZlujmvyjQJ-DW8"
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
