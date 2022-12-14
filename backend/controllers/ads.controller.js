@@ -224,3 +224,4 @@ function performDelete(req, res, next) {
         res.json({ success: true, message: 'Successfully deleted ads!' });
     });
 }
+exports.performDelete = performDelete;
