@@ -30,6 +30,6 @@ import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
     AppRoutingModule
   ],
   providers: [AuthGuard],
-  bootstrap: [AppComponent]
+  bootstrap: [IndexComponent]
 })
 export class AppModule { }
