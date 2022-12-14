@@ -38,7 +38,7 @@ exports.qaList = function(req, res, next) {
         }
         else
         {
-            res.render('ads/qapage', {
+            res.render('ads/qa', {
                 title: 'Questions & Answers', 
                 QaList: qaList
             })            

@@ -34,9 +34,9 @@ router.post('/add', requireAuth, adsController.processAddPage);
 router.get('/delete/:id', requireAuth, adsController.performDelete);
 
 // Route for QA
-router.get('/qa', adsController.displayQaPage);
+router.get('/qaList', adsController.qaList);
 
 /* POST Route for processing the QA page - CREATE Operation */
-router.post('/qa:/id', adsController.processQaPage);
+// router.post('/qa:/id', adsController.processQaPage);
 
 module.exports = router;
